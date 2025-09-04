@@ -1,0 +1,39 @@
+ static void listar_tarefa() {
+        
+
+        System.out.println("Digite o ID da tarefa que deseja listar: ");
+        long id = scanner.nextLong();
+        for (int i = 0; i < contador; i++) {
+            if (tarefas[i].getId() == id) {
+                System.out.println("\nTarefa encontrada:");
+                System.out.println("Seu título: " + tarefas[i].getTitulo());
+                System.out.println("Sua descrição: " + tarefas[i].getDescricao());
+                System.out.println("Sua Data/Hora: " + tarefas[i].getDataHoraFormatada());
+                System.out.println("Se está concluída: " + tarefas[i].isConcluida());
+                System.out.println("Seu Tarefa ID: " + tarefas[i].getId());
+                return;
+            }
+        }
+    
+    }
+    static void remover_tarefa() {
+        
+
+        System.out.println("Digite o ID da tarefa que deseja remover: ");
+        long id = scanner.nextLong();
+
+        for (int i = 0; i < contador; i++) {
+            if (tarefas[i].getId() == id) {
+                for (int j = i; j < contador - 1; j++) {
+                    tarefas[j] = tarefas[j + 1];
+                }
+                tarefas[--contador] = null;
+                System.out.println("Tarefa com ID " + id + " removida com sucesso.");
+                return;
+            }
+        }
+
+        System.out.println("Tarefa com ID " + id + " não encontrada.");
+    }
+
+}
